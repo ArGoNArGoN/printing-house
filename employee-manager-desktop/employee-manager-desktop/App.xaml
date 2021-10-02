@@ -1,7 +1,29 @@
 ﻿<Application x:Class="employee_manager_desktop.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             
+             xmlns:view="clr-namespace:employee_manager_desktop.MVVM.Views"
+             xmlns:viewModel="clr-namespace:employee_manager_desktop.MVVM.ViewModels">
+
+
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:CompletedOrdersViewModel}">
+                <view:CompletedOrdersView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:NewOrdersViewModel}">
+                <view:NewOrdersView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:OrdersInProgressViewModel}">
+                <view:OrdersInProgressView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

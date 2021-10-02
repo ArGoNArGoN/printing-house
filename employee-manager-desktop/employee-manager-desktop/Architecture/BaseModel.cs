@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace employee_manager_desktop.Architecture
 {
-    internal abstract class BaseModel
+    public abstract class BaseModel
     {
         public virtual Boolean IsValid { get; } = true;
     }

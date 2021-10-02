@@ -23,5 +23,19 @@ namespace employee_manager_desktop.MVVM.Views
         {
             InitializeComponent();
         }
+
+        private void Close(object sender, RoutedEventArgs e)
+            => Close();
+
+        private void Expand(object sender, RoutedEventArgs e) 
+            => WindowState = WindowState == WindowState.Normal
+                ? WindowState.Maximized
+                : WindowState.Normal;
+
+        private void Minimized(object sender, RoutedEventArgs e)
+            => WindowState = WindowState.Minimized;
+
+        private void DragOverEx(object sender, MouseButtonEventArgs e) 
+            => DragMove();
     }
 }
