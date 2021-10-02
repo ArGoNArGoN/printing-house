@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace employee_manager_desktop.Architecture
 {
-    internal abstract class BaseViewModel
+    public abstract class BaseViewModel
         : INotifyPropertyChanged
     {
         protected BaseViewModel() { }

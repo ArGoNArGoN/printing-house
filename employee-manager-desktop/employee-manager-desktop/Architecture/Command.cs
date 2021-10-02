@@ -10,7 +10,7 @@ namespace employee_manager_desktop.Architecture
     /// <summary>
     /// Предоставляет возможность связывания VM c V
     /// </summary>
-    internal class Command
+    public class Command
         : ICommand
     {
         protected Action<Object> execute;

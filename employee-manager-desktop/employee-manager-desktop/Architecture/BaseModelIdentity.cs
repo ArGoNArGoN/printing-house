@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace employee_manager_desktop.Architecture
 {
-    internal class BaseModelIdentity<T>
+    public class BaseModelIdentity<T>
         : BaseModel
     {
         protected Int32 identity;

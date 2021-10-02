@@ -8,8 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="MVVM\Models\" />
+    <Compile Remove="MVVM\Views\Themed\**" />
+    <EmbeddedResource Remove="MVVM\Views\Themed\**" />
+    <None Remove="MVVM\Views\Themed\**" />
+    <Page Remove="MVVM\Views\Themed\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MVVM\Views\Theme\" />
     <Folder Include="Service\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
 </Project>
