@@ -6,7 +6,9 @@ namespace employee_manager_desktop.Architecture
     public abstract class BaseViewModel
         : INotifyPropertyChanged
     {
-        protected BaseViewModel() { }
+        protected BaseViewModel() { InitializeCommand(); }
+
+        protected virtual void InitializeCommand() { }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

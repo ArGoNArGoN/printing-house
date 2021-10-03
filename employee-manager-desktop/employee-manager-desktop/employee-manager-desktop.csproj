@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <Folder Include="MVVM\Views\Theme\" />
-    <Folder Include="Service\" />
   </ItemGroup>
 
   <ItemGroup>
