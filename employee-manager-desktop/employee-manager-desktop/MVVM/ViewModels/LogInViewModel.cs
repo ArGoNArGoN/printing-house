@@ -11,20 +11,10 @@ namespace employee_manager_desktop.MVVM.ViewModels
 	{
 		private IRegistrationService service;
 
-		private AuthorizationUserModel user;
 		private String logIn;
 		private String passwor;
 		private Boolean inProcess;
 
-		public AuthorizationUserModel User
-		{
-			get { return user; }
-			set 
-			{
-				user = value; 
-				OnPropertyChanged(nameof(User)); 
-			}
-		}
 		public String LogIn
 		{
 			get { return logIn; }
@@ -47,6 +37,7 @@ namespace employee_manager_desktop.MVVM.ViewModels
 				OnPropertyChanged(nameof(InProcess));
 			}
         }
+		public event Action<AuthorizationUserModel> RegisrEvent;
 
 		public ICommand AuthorizationUserCommand { get; protected set; }
 
@@ -71,18 +62,18 @@ namespace employee_manager_desktop.MVVM.ViewModels
 		{
 			InProcess = true;
 
-            try
-            {
-				User = service.RegistrUser(LogIn, Password);
+			try
+			{
+				var user = new AuthorizationUserModel() { LogIn = "mr.yayay01@bk.ru" };
+				// var user = service.RegistrUser(LogIn, Password);
+
+				RegisrEvent?.Invoke(user);
 			}
-            catch (Exception)
-            {
-				User = null;
-            }
-            finally
-            {
+			catch (Exception) { }
+			finally
+			{
 				InProcess = false;
-            }
+			}
 		}
 	}
 }

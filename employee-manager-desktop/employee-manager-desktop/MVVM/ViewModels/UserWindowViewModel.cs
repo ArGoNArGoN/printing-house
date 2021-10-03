@@ -1,15 +1,11 @@
 ﻿using employee_manager_desktop.Architecture;
 using EmployeeManager.MVVM.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace employee_manager_desktop.MVVM.ViewModels
 {
-	public sealed class UserWindowViewModel
+    public sealed class UserWindowViewModel
 		: BaseViewModel
 	{
 		private AuthorizationUserModel userModel;
@@ -27,22 +23,28 @@ namespace employee_manager_desktop.MVVM.ViewModels
 		public ICommand CompletedOrdersVMCommand { get; private set; }
 		public ICommand LogInVMCommand { get; private set; }
 
-		public AuthorizationUserModel UserModel 
-		{ 
+		public AuthorizationUserModel UserModel
+		{
 			get => userModel;
-
 			set
 			{
 				userModel = value;
 				OnPropertyChanged(nameof(UserModel));
 			}
 		}
+
+		public String UserLogIn 
+		{
+			get => UserModel?.LogIn ?? "";
+		}
+
 		public Object CurrentView
 		{
 			get => currentView; 
 			set 
 			{
-				currentView = value; 
+				currentView = value;
+				OnPropertyChanged(nameof(UserLogIn));
 				OnPropertyChanged(nameof(CurrentView)); 
 			}
 		}
@@ -51,9 +53,14 @@ namespace employee_manager_desktop.MVVM.ViewModels
 			: base() 
 		{
 			CurrentView = LogInVM;
+			LogInVM.RegisrEvent += (ob) =>
+            {
+                UserModel = ob;
+				HomeVMCommand?.Execute(this);
+			};
 		}
 
-		protected override void InitializeCommand()
+        protected override void InitializeCommand()
 		{
 			HomeVM = new ();
 			NewOrdersVM = new ();
@@ -61,10 +68,10 @@ namespace employee_manager_desktop.MVVM.ViewModels
 			CompletedOrdersVM = new ();
 			LogInVM = new ();
 
-			HomeVMCommand = new Command(x => { CurrentView = HomeVM; });
-			NewOrdersVMCommand = new Command(x => { CurrentView = NewOrdersVM; });
-			OrdersInProgressVMCommand = new Command(x => { CurrentView = OrdersInProgressVM; });
-			CompletedOrdersVMCommand = new Command(x => { CurrentView = CompletedOrdersVM; });
+			HomeVMCommand = new Command(x => { CurrentView = UserModel is null ? LogInVM : HomeVM; });
+			NewOrdersVMCommand = new Command(x => { CurrentView = UserModel is null ? LogInVM : NewOrdersVM; });
+			OrdersInProgressVMCommand = new Command(x => { CurrentView = UserModel is null ? LogInVM : OrdersInProgressVM; });
+			CompletedOrdersVMCommand = new Command(x => { CurrentView = UserModel is null ? LogInVM : CompletedOrdersVM; });
 			LogInVMCommand = new Command(x => { CurrentView = LogInVM; });
 		}
 	}
