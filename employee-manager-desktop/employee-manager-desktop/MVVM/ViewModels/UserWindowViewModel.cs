@@ -15,7 +15,6 @@ namespace employee_manager_desktop.MVVM.ViewModels
         private AuthorizationUserModel userModel;
         private Object currentView;
 
-
         private HomeViewModel HomeVM { get; set; }
         private NewOrdersViewModel NewOrdersVM { get; set; }
         private OrdersInProgressViewModel OrdersInProgressVM { get; set; }
