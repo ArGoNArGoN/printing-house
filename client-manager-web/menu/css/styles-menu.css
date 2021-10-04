@@ -1,0 +1,215 @@
+/*меню*/
+.nav {
+    width: 320px;
+    min-width: 320px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    left: -320px;
+    padding: 15px 20px;
+    transition: left 0.3s; /*анимация выдвижения меню*/
+    background: #006400;
+    z-index: 2000; /*поверх других элементов*/
+}
+ 
+/*кнопка выдвижения панели, кнопка-гамбургер*/ 
+.nav-toggle {
+    position: absolute;
+    left: 320px;
+    top: 1em;
+    padding: 0.5em;
+    background: inherit;
+    color: #98FB98;
+    cursor: pointer; /*курсор при наведении*/
+    font-size: 1.3em;
+    line-height: 1;
+    z-index: 2001;
+}
+ 
+/*кнопка-гамбургер*/
+.nav-toggle:after {
+    content: '\2630';
+    text-decoration: none;
+}
+ 
+/*чекбокс*/
+[id='nav-toggle'] {
+    position: absolute;
+    display: none;
+}
+
+/*когда флажок установлен, панель открывается*/
+[id='nav-toggle']:checked ~ .nav {
+    left: 0;
+    box-shadow:4px 0px 20px 0px rgba(0,0,0, 0.5);
+    overflow-y: auto;
+}
+
+/*смещение контента страницы при открытии панели*/ 
+[id='nav-toggle']:checked ~ main > article {
+    transform: translateX(320px);
+}
+ 
+/*изменение "гамбургера" на "крестик"*/
+[id='nav-toggle']:checked ~ .nav > .nav-toggle:after {
+    content: '\2715';
+}
+ 
+/*фикс бага в android <= 4.1.2 http://timpietrusky.com/advanced-checkbox-hack */ 
+body {
+    -webkit-animation: bugfix infinite 1s;
+}
+ 
+@-webkit-keyframes bugfix {
+    to {
+      padding: 0;
+    }
+}
+ 
+/*для мобильных устройств*/ 
+@media screen and (min-width: 320px) {
+    html,
+    body {
+      margin: 0;
+      overflow-x: hidden;
+    }
+}
+ 
+@media screen and (max-width: 320px) {
+    html,
+    body {
+      margin: 0;
+      overflow-x: hidden;
+    }
+    .nav {
+      width: 100%;
+      box-shadow: none
+    }
+}
+ 
+/*логотип на панели*/ 
+.nav h2 {
+    width: 90%;
+    padding: 0;
+    margin: 10px 0;
+    text-align: center;
+    font-size: 1.3em;
+    line-height: 1.3em;
+    opacity: 0;
+    transition: opacity 0.9s, transform 0.9s;
+    color: #32CD32;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Comic Sans MS', sans-serif;
+}
+ 
+/*плавное появление логотипа при раскрытии панели */
+[id='nav-toggle']:checked ~ .nav h2 {
+    opacity: 1;
+    transform: scale(1, 1);
+}
+ 
+/*меню, неупорядоченный список пунктов, анимация*/ 
+.nav > ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ 
+.nav > ul > li {
+    line-height: 3; /*отступы между каждым пунктом меню*/
+    opacity: 0;
+    transform: translateX(-50%); /*для выдвижения*/
+    transition: opacity .5s .1s, transform .5s .1s;
+}
+ 
+[id='nav-toggle']:checked ~ .nav > ul > li {
+    opacity: 1;
+    transform: translateX(0);
+}
+ 
+/*интервалы появления пунктов меню*/
+.nav > ul > li:nth-child(2) {
+    transition: opacity .5s .2s, transform .5s .2s;
+}
+ 
+.nav > ul > li:nth-child(3) {
+    transition: opacity .5s .3s, transform .5s .3s;
+}
+ 
+.nav > ul > li:nth-child(4) {
+    transition: opacity .5s .4s, transform .5s .4s;
+}
+ 
+.nav > ul > li:nth-child(5) {
+    transition: opacity .5s .5s, transform .5s .5s;
+}
+ 
+.nav > ul > li:nth-child(6) {
+    transition: opacity .5s .6s, transform .5s .6s;
+}
+ 
+.nav > ul > li:nth-child(7) {
+    transition: opacity .5s .7s, transform .5s .7s;
+}
+ 
+/*оформление ссылок пунктов меню*/ 
+.nav > ul > li > a {
+    display: inline-block;
+    position: relative;
+    padding: 0;
+    font-family: 'Comic Sans MS', sans-serif;
+    font-weight: 300;
+    font-size: 1.2em;
+    color: #98FB98;
+    width: 100%;
+    text-decoration: none;
+    transition: color .5s ease, padding .5s ease; /*плавный сдвиг при наведении*/
+}
+ 
+/*сдвиг пунктов меню вправо при наведении*/ 
+.nav > ul > li > a:hover,
+.nav > ul > li > a:focus {
+    padding-left: 15px;
+}
+
+/*линия между пунктами меню*/ 
+.nav > ul > li > a:before {
+    content: '';
+}
+ 
+.nav > ul > li > a:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background: #228B22;
+}
+
+/*затенение контента при открытии панели*/ 
+.mask-content {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    visibility: hidden;
+    opacity: 0;
+}
+
+[id='nav-toggle']:checked ~ .mask-content {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .5s, visibility .5s;
+}
+
+[id='nav-toggle']:checked ~ .nav > .nav-toggle:after

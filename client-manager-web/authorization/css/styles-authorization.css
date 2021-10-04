@@ -1,0 +1,81 @@
+form
+{
+	font-family: 'Comic Sans MS';
+}
+
+.container-authorization
+{
+    padding: 20px;
+}
+
+input[type=text], input[type=password]
+{
+    width: 99%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #98FB98;
+}
+
+input[type=text]:focus, input[type=password]:focus
+{
+    background-color: #32CD32;
+	transition: 1s;
+    outline: none;
+}
+
+
+hr
+{
+    border: 1px solid #f1f1f1; /*серый*/
+    margin-bottom: 50px;
+}
+
+.authorization-btn 
+{
+    background-color: #228B22;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+	font-size: 1.4em;
+	font-family: 'Comic Sans MS';
+    margin-left: 350px;
+}
+
+.authorization-btn:hover
+{
+    opacity: 1;
+	background-color: #006400;
+	transition: 1s;
+}
+
+a
+{
+    color: #32CD32;
+}
+
+a:hover
+{
+	color: #228B22;
+	transition: 1s;
+}
+
+.container-forgot-password
+{
+    background-color: white;
+    text-align: center;
+}
+
+::-webkit-input-placeholder
+{
+	color: #006400;
+	opacity: 1;
+}
+
+:focus::-webkit-input-placeholder
+{
+	color: transparent;
+}
