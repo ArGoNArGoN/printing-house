@@ -11,6 +11,9 @@
             <ResourceDictionary.MergedDictionaries>
             </ResourceDictionary.MergedDictionaries>
 
+            <DataTemplate DataType="{x:Type viewModel:LogInViewModel}">
+                <view:LogInView/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
@@ -23,7 +26,7 @@
             <DataTemplate DataType="{x:Type viewModel:OrdersInProgressViewModel}">
                 <view:OrdersInProgressView/>
             </DataTemplate>
-
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>
