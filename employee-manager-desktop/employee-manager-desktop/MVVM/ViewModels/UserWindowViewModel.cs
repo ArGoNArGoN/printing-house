@@ -44,7 +44,6 @@ namespace employee_manager_desktop.MVVM.ViewModels
 			set 
 			{
 				currentView = value;
-				OnPropertyChanged(nameof(UserLogIn));
 				OnPropertyChanged(nameof(CurrentView)); 
 			}
 		}
@@ -57,6 +56,7 @@ namespace employee_manager_desktop.MVVM.ViewModels
             {
                 UserModel = ob;
 				HomeVMCommand?.Execute(this);
+				OnPropertyChanged(nameof(UserLogIn));
 			};
 		}
 
