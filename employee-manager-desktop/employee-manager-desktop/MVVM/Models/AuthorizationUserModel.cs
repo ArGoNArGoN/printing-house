@@ -1,7 +1,7 @@
 ﻿using employee_manager_desktop.Architecture;
 using System;
 
-namespace EmployeeManager.MVVM.Models
+namespace employee_manager_desktop.MVVM.Models
 {
     public class AuthorizationUserModel
 		: BaseModel

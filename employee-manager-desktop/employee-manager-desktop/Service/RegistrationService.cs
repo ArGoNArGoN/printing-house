@@ -1,4 +1,4 @@
-﻿using EmployeeManager.MVVM.Models;
+﻿using employee_manager_desktop.MVVM.Models;
 using System;
 
 namespace employee_manager_desktop.Service

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>employee_manager_desktop</RootNamespace>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
@@ -20,6 +20,16 @@
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ClientRemouting\ClientRemouting.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Contract">
+      <HintPath>..\..\..\..\Users\Qwerty\source\repos\ServerPrintingHouse\Contract\bin\Debug\Contract.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

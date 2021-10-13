@@ -1,6 +1,6 @@
 ﻿using employee_manager_desktop.Architecture;
+using employee_manager_desktop.MVVM.Models;
 using employee_manager_desktop.Service;
-using EmployeeManager.MVVM.Models;
 using System;
 using System.Windows.Input;
 

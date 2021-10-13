@@ -1,5 +1,5 @@
 ﻿using employee_manager_desktop.Architecture;
-using EmployeeManager.MVVM.Models;
+using employee_manager_desktop.MVVM.Models;
 using System;
 using System.Windows.Input;
 
@@ -62,16 +62,16 @@ namespace employee_manager_desktop.MVVM.ViewModels
 
         protected override void InitializeCommand()
 		{
-			HomeVM = new ();
-			NewOrdersVM = new ();
-			OrdersInProgressVM= new ();
-			CompletedOrdersVM = new ();
-			LogInVM = new ();
+			HomeVM = new HomeViewModel();
+			NewOrdersVM = new NewOrdersViewModel();
+			OrdersInProgressVM= new OrdersInProgressViewModel();
+			CompletedOrdersVM = new CompletedOrdersViewModel();
+			LogInVM = new LogInViewModel();
 
-			HomeVMCommand = new Command(x => { CurrentView = UserModel is null ? LogInVM : HomeVM; });
-			NewOrdersVMCommand = new Command(x => { CurrentView = UserModel is null ? LogInVM : NewOrdersVM; });
-			OrdersInProgressVMCommand = new Command(x => { CurrentView = UserModel is null ? LogInVM : OrdersInProgressVM; });
-			CompletedOrdersVMCommand = new Command(x => { CurrentView = UserModel is null ? LogInVM : CompletedOrdersVM; });
+			HomeVMCommand = new Command(x => { CurrentView = UserModel is null ? (Object)LogInVM : HomeVM; });
+			NewOrdersVMCommand = new Command(x => { CurrentView = UserModel is null ? (Object)LogInVM : NewOrdersVM; });
+			OrdersInProgressVMCommand = new Command(x => { CurrentView = UserModel is null ? (Object)LogInVM : OrdersInProgressVM; });
+			CompletedOrdersVMCommand = new Command(x => { CurrentView = UserModel is null ? (Object)LogInVM : CompletedOrdersVM; });
 			LogInVMCommand = new Command(x => { CurrentView = LogInVM; });
 		}
 	}

@@ -5,9 +5,69 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:employee_manager_desktop.MVVM.Views"
              mc:Ignorable="d" 
-             Background="Yellow"
+             Background="#FFACACAC"
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style TargetType="Border" x:Key="borderCurrentView">
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Background" Value="WhiteSmoke"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Visibility" Value="Visible"/>
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CurrentView}" Value="{x:Null}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
-            
+        <Border Style="{StaticResource borderCurrentView}">
+            <ContentControl Content="{Binding CurrentView}"></ContentControl>
+        </Border>
+
+        <ListView ItemsSource="{Binding Orders}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Background="Transparent" Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <ItemContainerTemplate>
+                    <Border>
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Border.Style>
+
+                        <StackPanel Margin="4">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock>Клиент: </TextBlock>
+                                <TextBlock Text="{Binding GetFullNameClient}"></TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock>Сотрудник: </TextBlock>
+                                <TextBlock Text="{Binding GetFullNameClientManager}"></TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock>Товары: </TextBlock>
+                                <TextBlock Text="{Binding GetAllProduct}"></TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock>Описание: </TextBlock>
+                                <TextBlock Text="{Binding Description}"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </ItemContainerTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </UserControl>
