@@ -3,6 +3,7 @@ using employee_manager_desktop.MVVM.Models;
 using employee_manager_desktop.Service;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace employee_manager_desktop.MVVM.ViewModels
 {
@@ -38,6 +39,8 @@ namespace employee_manager_desktop.MVVM.ViewModels
 			: base() 
 		{
 			orederDataStore = new NewOrederDataStore();
+            Orders = orederDataStore.GetNewOrders().Select(x => new NewOrderModel(x)).ToList();
+            CurrentView = null;
 		}
 	}
 }
