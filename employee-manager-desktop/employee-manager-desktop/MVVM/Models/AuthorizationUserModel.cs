@@ -42,7 +42,7 @@ namespace EmployeeManager.MVVM.Models
         }
 
         /// <summary>
-        /// метод не работает корректно 
+        /// метод работает некорректно 
         /// </summary>
         public override bool IsValid => 
             FirstName.Trim().Length > 2
